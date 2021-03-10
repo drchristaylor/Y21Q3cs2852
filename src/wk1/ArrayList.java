@@ -71,7 +71,7 @@ public class ArrayList<E> implements Iterable<E>, Collection<E>, List<E>, Random
 
     @Override
     public int size() {
-        return 2;
+        return list.length;
     }
 
     @Override
