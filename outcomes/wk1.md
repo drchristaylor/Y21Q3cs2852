@@ -2,17 +2,17 @@
 
 ### Interfaces
 
-* [ ] Use the [`Collection<E>`](http://javadoc.taylorial.com/java.base/util/Collection.html) and [`List<E>`](http://javadoc.taylorial.com/java.base/util/List.html) interfaces defined in the Java Collections Framework
-* [ ] Explain when to use `Collection<E>` instead of `List<E>` and vice versa
-* [ ] Demonstrate correct use of generics when declaring `Collection<E>` and `List<E>` interfaces
-* [ ] Describe the implications of an interface extending another interface
-* [ ] List two classes that implement the `Collection<E>` interface
-* [ ] List two classes that implement the `List<E>` interface
+* [x] Use the [`Collection<E>`](http://javadoc.taylorial.com/java.base/util/Collection.html) and [`List<E>`](http://javadoc.taylorial.com/java.base/util/List.html) interfaces defined in the Java Collections Framework
+* [x] Explain when to use `Collection<E>` instead of `List<E>` and vice versa
+* [x] Demonstrate correct use of generics when declaring `Collection<E>` and `List<E>` interfaces
+* [x] Describe the implications of an interface extending another interface
+* [x] List two classes that implement the `Collection<E>` interface
+* [x] List two classes that implement the `List<E>` interface
 
 ### Array Based Lists
 
-* [ ] Describe key differences between an array and an [`ArrayList<E>`](http://javadoc.taylorial.com/java.base/util/ArrayList.html) object
-* [ ] Implement classes and methods that make use of generics
+* [x] Describe key differences between an array and an [`ArrayList<E>`](http://javadoc.taylorial.com/java.base/util/ArrayList.html) object
+* [x] Implement classes and methods that make use of generics
 * [ ] Write an array-based implementation of the `List<E>` interface, including the following methods:
     * [ ] [`add(E)`](http://javadoc.taylorial.com/java.base/util/List.html#add%28E%29)
     * [ ] [`add(int, E)`](http://javadoc.taylorial.com/java.base/util/List.html#add%28int,E%29)

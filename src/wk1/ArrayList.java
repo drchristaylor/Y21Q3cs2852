@@ -8,14 +8,25 @@ import java.util.ListIterator;
 
 public class ArrayList<E> implements Iterable<E>, Collection<E>, List<E>, RandomAccess {
 
+    private Object[] list;
+
+    public ArrayList() {
+        list = new Object[0];
+    }
+
     @Override
-    public boolean add(E e) {
-        return false;
+    public boolean add(E element) {
+        Object[] temp = new Object[list.length+1];
+        for(int i=0; i<list.length; i++) {
+            temp[i] = list[i];
+        }
+        temp[temp.length-1] = element;
+        list = temp;
+        return true;
     }
 
     @Override
     public void add(int index, E element) {
-
     }
 
     @Override
@@ -60,7 +71,7 @@ public class ArrayList<E> implements Iterable<E>, Collection<E>, List<E>, Random
 
     @Override
     public int size() {
-        return 0;
+        return 2;
     }
 
     @Override
