@@ -27,6 +27,15 @@ public class ArrayList<E> implements Iterable<E>, Collection<E>, List<E>, Random
 
     @Override
     public void add(int index, E element) {
+        Object[] temp = new Object[list.length+1];
+        for(int i=0; i<index; i++) {
+            temp[i] = list[i];
+        }
+        temp[index] = element;
+        for(int i=index+1; i<temp.length; i++) {
+            temp[i] = list[i-1];
+        }
+        list = temp;
     }
 
     @Override
