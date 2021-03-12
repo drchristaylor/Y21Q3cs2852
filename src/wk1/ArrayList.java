@@ -27,6 +27,9 @@ public class ArrayList<E> implements Iterable<E>, Collection<E>, List<E>, Random
 
     @Override
     public void add(int index, E element) {
+        if(index<0 || index>size()) {
+            throw new IndexOutOfBoundsException("Index: " + index + " Size: " + size());
+        }
         Object[] temp = new Object[list.length+1];
         for(int i=0; i<index; i++) {
             temp[i] = list[i];
@@ -40,27 +43,35 @@ public class ArrayList<E> implements Iterable<E>, Collection<E>, List<E>, Random
 
     @Override
     public void clear() {
-
+        list = new Object[0];
     }
 
     @Override
-    public boolean contains(Object o) {
-        return false;
+    public boolean contains(Object target) {
+        return indexOf(target)>=0;
     }
 
     @Override
     public E get(int index) {
-        return null;
+        if(index<0 || index>=size()) {
+            throw new IndexOutOfBoundsException("Index: " + index + " Size: " + size());
+        }
+        return (E)list[index];
     }
 
     @Override
-    public int indexOf(Object o) {
-        return 0;
+    public int indexOf(Object target) {
+        int index = 0;
+        boolean found = false;
+        while(index<size() && !found){
+            found = (target==null ? get(index++)==null : target.equals(get(index++)));
+        }
+        return found ? index-1 : -1;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size()==0;
     }
 
     @Override
@@ -69,13 +80,22 @@ public class ArrayList<E> implements Iterable<E>, Collection<E>, List<E>, Random
     }
 
     @Override
-    public boolean remove(Object o) {
-        return false;
+    public boolean remove(Object target) {
+        int index = indexOf(target);
+        if(index!=-1) {
+            remove(indexOf(target));
+        }
+        return index!=-1;
     }
 
     @Override
     public E set(int index, E element) {
-        return null;
+        if(index<0 || index>=size()) {
+            throw new IndexOutOfBoundsException("Index: " + index + " Size: " + size());
+        }
+        E oldValue = (E)list[index];
+        list[index] = element;
+        return oldValue;
     }
 
     @Override
