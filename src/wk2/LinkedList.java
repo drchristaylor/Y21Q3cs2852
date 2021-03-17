@@ -1,111 +1,73 @@
-package wk1;
+package wk2;
 
 import java.util.Collection;
-import java.util.RandomAccess;
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
 import java.util.ListIterator;
 
-public class ArrayList<E> implements Iterable<E>, Collection<E>, List<E>, RandomAccess {
+public class LinkedList<E> implements List<E> {
+    public LinkedList() {
 
-    private Object[] list;
-
-    public ArrayList() {
-        list = new Object[0];
     }
 
     @Override
     public boolean add(E element) {
-        Object[] temp = new Object[list.length+1];
-        for(int i=0; i<list.length; i++) {
-            temp[i] = list[i];
-        }
-        temp[temp.length-1] = element;
-        list = temp;
         return true;
     }
 
     @Override
     public void add(int index, E element) {
-        if(index<0 || index>size()) {
-            throw new IndexOutOfBoundsException("Index: " + index + " Size: " + size());
-        }
-        Object[] temp = new Object[list.length+1];
-        for(int i=0; i<index; i++) {
-            temp[i] = list[i];
-        }
-        temp[index] = element;
-        for(int i=index+1; i<temp.length; i++) {
-            temp[i] = list[i-1];
-        }
-        list = temp;
+
     }
 
     @Override
     public void clear() {
-        list = new Object[0];
+
     }
 
     @Override
     public boolean contains(Object target) {
-        return indexOf(target)>=0;
+        return false;
     }
 
     @Override
     public E get(int index) {
-        if(index<0 || index>=size()) {
-            throw new IndexOutOfBoundsException("Index: " + index + " Size: " + size());
-        }
-        return (E)list[index];
+        return null;
     }
 
     @Override
     public int indexOf(Object target) {
-        int index = 0;
-        boolean found = false;
-        while(index<size() && !found){
-            found = (target==null ? get(index++)==null : target.equals(get(index++)));
-        }
-        return found ? index-1 : -1;
+        return -1;
     }
 
     @Override
     public boolean isEmpty() {
-        return size()==0;
+        return true;
     }
 
     @Override
     public E remove(int index) {
-        throw new UnsupportedOperationException("Student homework");
+        return null;
     }
 
     @Override
     public boolean remove(Object target) {
-        int index = indexOf(target);
-        if(index!=-1) {
-            remove(indexOf(target));
-        }
-        return index!=-1;
+        return false;
     }
 
     @Override
     public E set(int index, E element) {
-        if(index<0 || index>=size()) {
-            throw new IndexOutOfBoundsException("Index: " + index + " Size: " + size());
-        }
-        E oldValue = (E)list[index];
-        list[index] = element;
-        return oldValue;
+        return null;
     }
 
     @Override
     public int size() {
-        return list.length;
+        return 0;
     }
 
     @Override
     public Object[] toArray() {
-        throw new UnsupportedOperationException("Student homework");
+        return null;
     }
 
     /* -------------------------------------------------------------- */
