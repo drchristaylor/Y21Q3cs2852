@@ -6,12 +6,37 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class LinkedList<E> implements List<E> {
-    public LinkedList() {
+    private class Node {
+        E value;
+        Node next;
 
+        Node(E value) {
+            this(value, null);
+        }
+
+        Node(E value, Node next) {
+            this.value = value;
+            this.next = next;
+        }
+    }
+
+    private Node head;
+
+    public LinkedList() {
+        head = null;
     }
 
     @Override
     public boolean add(E element) {
+        if(isEmpty()) {
+            head = new Node(element);
+        } else {
+            Node walker = head;
+            while (walker.next != null) {
+                walker = walker.next;
+            }
+            walker.next = new Node(element);
+        }
         return true;
     }
 
@@ -22,7 +47,7 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public void clear() {
-
+        head = null;
     }
 
     @Override
@@ -42,7 +67,7 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public boolean isEmpty() {
-        return true;
+        return head==null;
     }
 
     @Override
@@ -62,7 +87,13 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public int size() {
-        return 0;
+        int size = 0;
+        Node walker = head;
+        while(walker!=null) {
+            ++size;
+            walker = walker.next;
+        }
+        return size;
     }
 
     @Override
