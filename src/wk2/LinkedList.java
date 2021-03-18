@@ -42,7 +42,19 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public void add(int index, E element) {
-
+        if(index<0 || index>size()) {
+            throw new IndexOutOfBoundsException("...");
+        }
+        if(index==0) {
+            head = new Node(element, head);
+        } else {
+            Node walker = head;
+            while(index>1) {
+                walker = walker.next;
+                --index;
+            }
+            walker.next = new Node(element, walker.next);
+        }
     }
 
     @Override
@@ -82,7 +94,12 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public E set(int index, E element) {
-        return null;
+        if(index<0 || index>=size()) {
+            throw new IndexOutOfBoundsException("Index " + index + " Size: " + size());
+        }
+        E oldValue = remove(index);
+        add(index, element);
+        return oldValue;
     }
 
     @Override
