@@ -1,10 +1,6 @@
 package wk1;
 
-import java.util.Collection;
-import java.util.RandomAccess;
-import java.util.List;
-import java.util.Iterator;
-import java.util.ListIterator;
+import java.util.*;
 
 public class ArrayList<E> implements Iterable<E>, Collection<E>, List<E>, RandomAccess {
 
@@ -108,6 +104,29 @@ public class ArrayList<E> implements Iterable<E>, Collection<E>, List<E>, Random
         throw new UnsupportedOperationException("Student homework");
     }
 
+    @Override
+    public Iterator<E> iterator() {
+        return new ArrayListIterator<>();
+    }
+
+    private class ArrayListIterator<E> implements Iterator<E> {
+
+        private int index = -1;
+
+        @Override
+        public boolean hasNext() {
+            return index+1<size();
+        }
+
+        @Override
+        public E next() {
+            if(!hasNext()) {
+                throw new NoSuchElementException("all tapped out");
+            }
+            return (E)list[++index];
+        }
+    }
+
     /* -------------------------------------------------------------- */
 
     @Override
@@ -157,11 +176,6 @@ public class ArrayList<E> implements Iterable<E>, Collection<E>, List<E>, Random
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        throw new UnsupportedOperationException("Too lazy");
-    }
-
-    @Override
-    public Iterator<E> iterator() {
         throw new UnsupportedOperationException("Too lazy");
     }
 }
