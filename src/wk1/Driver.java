@@ -7,7 +7,9 @@ public class Driver {
         List<String> phrases = new ArrayList<>();
         phrases.add("Horses can't swim very well");
         phrases.add("Seahorses can't swim very well");
-        phrases.add(-1, "Seamonkeys can swim very well");
-        System.out.println(phrases.size());
+        phrases.add(1, "Seamonkeys can swim very well");
+        for(String phrase : phrases) {
+            System.out.println(phrase);
+        }
     }
 }
