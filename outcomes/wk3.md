@@ -11,12 +11,12 @@
 
 ### Java Collections Framework and Testing
 
-* [ ] Explain the purpose of the Java Collections Framework
-* [ ] Be familiar with class/interface hierarchy for the Java Collections Framework
-* [ ] Describe the following levels of testing: unit, integration, system, and acceptance
-* [ ] Describe the differences between black-box testing and white-box testing
-* [ ] List advantages and disadvantages of black-box testing verses white-box testing
-* [ ] Develop tests that test boundary conditions
+* [x] Explain the purpose of the Java Collections Framework
+* [x] Be familiar with class/interface hierarchy for the Java Collections Framework
+* [x] Describe the following levels of testing: unit, integration, system, and acceptance
+* [x] Describe the differences between black-box testing and white-box testing
+* [x] List advantages and disadvantages of black-box testing verses white-box testing
+* [x] Develop tests that test boundary conditions
 
 #Testing Notes
 ## Levels of Testing
