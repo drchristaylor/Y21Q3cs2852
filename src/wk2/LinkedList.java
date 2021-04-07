@@ -64,7 +64,12 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public boolean contains(Object target) {
-        return false;
+        return head==null ? false : contains(target, head);
+    }
+
+    private boolean contains(Object target, Node walker) {
+        boolean found = target==null ? walker.value==null : walker.value.equals(target);
+        return (found || walker.next==null) ? found : contains(target, walker.next);
     }
 
     @Override
