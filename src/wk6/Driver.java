@@ -15,6 +15,6 @@ public class Driver {
         bst.add(77);
         System.out.println(bst.height());
         System.out.println(bst.contains(68));
-        System.out.println(bst.contains(82));
+        System.out.println(bst);
     }
 }

@@ -95,6 +95,16 @@ public class BST<E extends Comparable> {
     private int size(Node<E> subroot) {
         return subroot==null ? 0 : 1 + size(subroot.leftKid) + size(subroot.rightKid);
     }
+
+    @Override
+    public String toString() {
+        return "[" + inorder(root) + "]";
+    }
+
+    private String inorder(Node<E> subroot) {
+        return subroot==null ? "" : inorder(subroot.leftKid) + " " + subroot.value.toString()
+                + " " + inorder(subroot.rightKid);
+    }
 }
 
 
