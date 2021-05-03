@@ -1,12 +1,14 @@
 package wk6;
 
-public class BST<E extends Comparable> {
+import java.util.Set;
+
+public class BST<E extends Comparable<? super E>> {
     private Node<E> root;
 
     private static class Node<E> {
         E value;
-        Node leftKid;
-        Node rightKid;
+        Node<E> leftKid;
+        Node<E> rightKid;
 
         Node(E value) {
             this(value, null, null);
@@ -46,7 +48,7 @@ public class BST<E extends Comparable> {
     }
 
     public boolean add(E element) {
-        boolean added = false;
+        boolean added;
         if(root==null) {
             root = new Node<>(element);
             added = true;
@@ -64,14 +66,14 @@ public class BST<E extends Comparable> {
                 if(subroot.leftKid!=null) {
                     added = add(subroot.leftKid, element);
                 } else {
-                    subroot.leftKid = new Node(element);
+                    subroot.leftKid = new Node<>(element);
                     added = true;
                 }
             } else {
                 if(subroot.rightKid!=null) {
                     added = add(subroot.rightKid, element);
                 } else {
-                    subroot.rightKid = new Node(element);
+                    subroot.rightKid = new Node<>(element);
                     added = true;
                 }
             }
