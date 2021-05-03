@@ -1,21 +1,29 @@
 package wk6;
 
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Set;
 
-public class BST<E extends Comparable<? super E>> {
+public class BST<E extends Comparable<? super E>> implements Set<E> {
     private Node<E> root;
 
     private static class Node<E> {
         E value;
         Node<E> leftKid;
         Node<E> rightKid;
+        Node<E> parent;
 
         Node(E value) {
-            this(value, null, null);
+            this(value, null, null, null);
         }
 
-        Node(E value, Node<E> left, Node<E> right) {
+        Node(E value, Node<E> parent) {
+            this(value, parent, null, null);
+        }
+
+        Node(E value, Node<E> parent, Node<E> left, Node<E> right) {
             this.value = value;
+            this.parent = parent;
             leftKid = left;
             rightKid = right;
         }
@@ -25,12 +33,48 @@ public class BST<E extends Comparable<? super E>> {
         root = null;
     }
 
+    private Node<E> rightRotate(Node<E> C) {
+        Node<E> B = C.leftKid;
+        Node<E> y = B.rightKid;
+        Node<E> P = C.parent;
+        C.leftKid = y;
+        if(y!=null) {
+            y.parent = C;
+        }
+        C.parent = B;
+        B.rightKid = C;
+        B.parent = P;
+        if(P!=null) {
+            if(P.rightKid==C) {
+                P.rightKid = B;
+            } else {
+                P.leftKid = B;
+            }
+        }
+        return B;
+    }
+
     public boolean isEmpty() {
         return null==root;
     }
 
-    public boolean contains(E target) {
-        return contains(root, target);
+    public boolean contains(Object target) {
+        return contains(root, (E)target);
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Object[] toArray() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public <T> T[] toArray(T[] a) {
+        throw new UnsupportedOperationException();
     }
 
     private boolean contains(Node<E> subroot, E target) {
@@ -56,6 +100,36 @@ public class BST<E extends Comparable<? super E>> {
             added = add(root, element);
         }
         return added;
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        return c.stream().allMatch(e -> contains(e));
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends E> c) {
+        return false;
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public void clear() {
+        root = null;
     }
 
     public boolean add(Node<E> subroot, E element) {

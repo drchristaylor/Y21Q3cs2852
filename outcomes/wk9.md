@@ -9,6 +9,6 @@
 
 ### Deep verses Shallow Copies
 
-* [ ] Distinguish between copying a reference and copying an object
-* [ ] Demonstrate proper use of `==` and `.equals()`
-* [ ] Describe approaches to making deep copies, e.g., `clone()` and copy constructors
+* [X] Distinguish between copying a reference and copying an object
+* [X] Demonstrate proper use of `==` and `.equals()`
+* [X] Describe approaches to making deep copies, e.g., `clone()` and copy constructors
