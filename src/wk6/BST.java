@@ -59,7 +59,8 @@ public class BST<E extends Comparable<? super E>> implements Set<E> {
     }
 
     public boolean contains(Object target) {
-        return contains(root, (E)target);
+        boolean compatible = this.getClass().isAssignableFrom(target.getClass());
+        return compatible && contains(root, (E)target);
     }
 
     @Override
@@ -109,7 +110,7 @@ public class BST<E extends Comparable<? super E>> implements Set<E> {
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return c.stream().allMatch(e -> contains(e));
+        return c.stream().allMatch(this::contains);
     }
 
     @Override
