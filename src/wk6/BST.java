@@ -59,7 +59,8 @@ public class BST<E extends Comparable<? super E>> implements Set<E> {
     }
 
     public boolean contains(Object target) {
-        boolean compatible = this.getClass().isAssignableFrom(target.getClass());
+        boolean compatible = root!=null && root.value!=null;
+        compatible = compatible && root.value.getClass().isAssignableFrom(target.getClass());
         return compatible && contains(root, (E)target);
     }
 
